@@ -17,7 +17,7 @@ class NewPost extends Component {
             }
 
             if(postToAdd.title && postToAdd.content){
-                axios.post('https://jsonplaceholder.typicode.com/posts',postToAdd)
+                axios.post('/posts',postToAdd)
                 .then(response =>{
                         console.log('post was added successfully ! ');
                         console.log(response);

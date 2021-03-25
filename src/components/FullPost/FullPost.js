@@ -9,7 +9,7 @@ class FullPost extends Component {
     componentDidUpdate () {
         if(this.props.idPost){
 
-            axios.get('https://jsonplaceholder.typicode.com/posts/'+ this.props.idPost)
+            axios.get('/posts/'+ this.props.idPost)
             .then(response => {
                 if(!this.state.post  ||(this.state.post !== null && this.state.post.id !== response.data.id) ){
                    
@@ -25,13 +25,13 @@ class FullPost extends Component {
 
     deletePostHandler = () =>{
         if(this.props.idPost){
-            axios.delete('https://jsonplaceholder.typicode.com/posts/'+this.props.idPost)
+            axios.delete('/posts/'+this.props.idPost)
             .then(response =>{
                 console.log(response);
             });
         };
     }
-    
+
     render () {
         const idPost = this.props.idPost;
         let post = <p style={{textAlign:"center"}}>Please select a Post!</p>;
