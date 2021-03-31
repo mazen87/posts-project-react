@@ -14,7 +14,7 @@ axios.defaults.headers.post['Content-type'] = 'application/json';
 //var requestInterceptor = 
 axios.interceptors.request.use(
     request => {
-        console.log(request);
+        //console.log(request);
         // edit the request config 
         return request;
     },
@@ -30,7 +30,7 @@ axios.interceptors.request.use(
 //var responseInterseptor = 
 axios.interceptors.response.use(
     response => {
-        console.log(response);
+       // console.log(response);
         // edit the request config 
         return response;
     },
