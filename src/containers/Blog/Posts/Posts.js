@@ -38,7 +38,10 @@ class Posts extends Component {
 
 
     postClickedHandler = (id) => {
-        this.setState({idSelected : id});
+        // navigating progrzmmztically 
+       // this.setState({idSelected : id});
+       this.props.history.push('/' +id);
+      // this.props.history.push({pathname : '/'+id});
     }
 
 
@@ -49,10 +52,10 @@ class Posts extends Component {
             posts = this.state.posts.map(
                 post => 
                      (
-                         <Link to={'/' + post.id} key={post.id}> 
-                             <Post title={post.title} author={post.author }
+                        /*  <Link to={'/' + post.id} key={post.id}>  */
+                             <Post title={post.title} author={post.author  } key={post.id}
                              clicked={()=>{this.postClickedHandler(post.id)}} />
-                         </Link> 
+                      /*    </Link>  */
                     )            
             );
       
