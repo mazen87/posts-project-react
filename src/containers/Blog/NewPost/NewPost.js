@@ -23,7 +23,12 @@ class NewPost extends Component {
                 .then(response =>{
                         console.log('post was added successfully ! ');
                         console.log(response);
-                        this.setState({submitted:true});
+                        //this.setState({submitted:true});
+                        /**
+                         * using push and replace for redirecting 
+                         */
+                       // this.props.history.push("/posts");
+                       this.props.history.replace('/posts');
                 });
             };
 
