@@ -8,11 +8,14 @@ import './Blog.css';
 //import axios from 'axios';
 import Posts from './Posts/Posts';
 import NewPost from './NewPost/NewPost';
+import ErrorNotFound from '../../components/ErrorNotFount/ErrorNotFound';
 
 
 
 class Blog extends Component {
-  
+        state = {
+            auth : false
+        }
     render () {
       
         return (
@@ -43,10 +46,19 @@ class Blog extends Component {
                 <Route path="/new-post" exact  render={() => <h1>home2</h1>} />   */}
                 <Switch>
                   
-                    <Route path="/new-post" exact component={NewPost}  /> 
+                    {this.state.auth ? <Route path="/new-post" exact component={NewPost}  /> : null }
                    
-                    <Route path="/posts"  component={Posts}  />  
-                    <Redirect  from="/" to="/posts"/>
+                    <Route path="/posts"  component={Posts}  /> 
+                    {/*  handing 404 error (unknown route) with creation an error component */}
+                    <Route component={ErrorNotFound} /> 
+
+                   {/*  handilng 404 error (unknown route) with out creation an error component  */}
+                  {/*  <Route  component={()=> <h1>Not Found </h1>} /> */}
+
+
+                    {/* <Redirect  from="/" to="/posts"/> */}
+
+
                     {/* <Route path="/" component={Posts} />  */}
                   {/*   <Route path="/:id" exact component={FullPost}  /> */}
                 </Switch>
