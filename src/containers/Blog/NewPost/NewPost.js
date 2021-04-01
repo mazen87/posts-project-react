@@ -12,9 +12,9 @@ class NewPost extends Component {
        
     }
 
-    componentDidMount () {
+    /* componentDidMount () {
         // if unauth   this.props.history.replace('/posts');
-    }
+    } */
 
     addPostHandler = () => {
             const postToAdd = {

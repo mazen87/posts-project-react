@@ -3,18 +3,23 @@ import {Route, Link , NavLink, Switch , Redirect} from 'react-router-dom';
 
 //import Post from '../../components/Post/Post';
 import FullPost from './FullPost/FullPost';
-//import NewPost from './NewPost/NewPost';
 import './Blog.css';
 //import axios from 'axios';
 import Posts from './Posts/Posts';
-import NewPost from './NewPost/NewPost';
+//import NewPost from './NewPost/NewPost';
 import ErrorNotFound from '../../components/ErrorNotFount/ErrorNotFound';
+import asyncComponent from '../../hoc/asyncComponent/asyncComponent';
+
+const AsyncNewPost = asyncComponent(
+    () => {  return import('./NewPost/NewPost')}
+);
+
 
 
 
 class Blog extends Component {
         state = {
-            auth : false
+            auth : true
         }
     render () {
       
@@ -46,7 +51,7 @@ class Blog extends Component {
                 <Route path="/new-post" exact  render={() => <h1>home2</h1>} />   */}
                 <Switch>
                   
-                    {this.state.auth ? <Route path="/new-post" exact component={NewPost}  /> : null }
+                    {this.state.auth ? <Route path="/new-post" exact component={AsyncNewPost}  /> : null }
                    
                     <Route path="/posts"  component={Posts}  /> 
                     {/*  handing 404 error (unknown route) with creation an error component */}
