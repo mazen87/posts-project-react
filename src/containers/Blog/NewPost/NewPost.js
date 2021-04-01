@@ -8,7 +8,12 @@ class NewPost extends Component {
         title: '',
         content: '',
         author: 'Max',
-        submitted : null
+        submitted : null,
+       
+    }
+
+    componentDidMount () {
+        // if unauth   this.props.history.replace('/posts');
     }
 
     addPostHandler = () => {
