@@ -4,9 +4,14 @@ import './FullPost.css';
 
 class FullPost extends Component {
     state = {
-        post: null
+        post: null,
+        
     }
-    componentDidMount () {
+
+    
+   /*  componentDidUpdate () {
+        console.log(this.props);
+       
         if(this.props.match.params.id){
 
             axios.get('/posts/'+ this.props.match.params.id)
@@ -20,9 +25,39 @@ class FullPost extends Component {
                 };
              
             });
-       };
+       }; 
+    } */
+
+     
+    componentDidMount (){
+      //  console.log(this.props);
+        this.loadData();
+    }
+    
+
+   componentDidUpdate () {
+    //console.log(this.props);
+        this.loadData();
     }
 
+    loadData () {
+        if(this.props.match.params.id){
+
+            axios.get('/posts/'+ this.props.match.params.id)
+            .then(response => {
+                if(!this.state.post  ||(this.state.post !== null && this.state.post.id !== response.data.id) ){
+                   
+                        this.setState({post:response.data});
+                        
+                        //console.log(response);
+                
+                   
+                };
+             
+            });
+       };
+    }
+ 
     deletePostHandler = () =>{
    
         if(this.props.idPost){
@@ -42,7 +77,9 @@ class FullPost extends Component {
         if(this.state.post){
 
             post = (
+                
                 <div className="FullPost">
+                
                     <h1>{this.state.post.title}</h1>
                     <p>{this.state.post.body}</p>
                     <div className="Edit">
